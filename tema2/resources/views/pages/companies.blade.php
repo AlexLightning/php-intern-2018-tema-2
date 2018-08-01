@@ -60,7 +60,7 @@
     <div class="form-group">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     
-    <label for="update">Update: </label>
+    <label for="destroy">ID of company to delete: </label>
       <select class="form-control" id="id" name="id">
         @foreach($comps as $comp)
           <option>{{$comp->id}}</option>
