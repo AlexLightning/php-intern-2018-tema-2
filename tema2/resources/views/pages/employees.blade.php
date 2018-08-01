@@ -31,7 +31,7 @@
 
 
 <form method="post" action="/employees/{{ $empl->id }}">
-    {{ method_field('PATCH') }}
+    {{ method_field('PUT') }}
     <div class="form-group">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     
