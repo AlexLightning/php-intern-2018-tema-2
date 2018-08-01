@@ -12,13 +12,15 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($comps as $comp)
+    @forelse($comps as $comp)
     <tr>
       <th scope="row">{{$comp->id}}</th>
       <td>{{$comp->name}}</td>
       <td>{{$comp->description}}</td>
     </tr>
-    @endforeach
+    @empty
+      <tr>No companies</tr>
+    @endforelse
   </tbody>
 </table>
 
@@ -27,7 +29,7 @@
 </p>
 
 <form method="post" action="/companies/{{ $comp->id }}">
-    {{ method_field('PATCH') }}
+    {{ method_field('PUT') }}
     <div class="form-group">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     
@@ -60,7 +62,7 @@
     <div class="form-group">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     
-    <label for="update">Update: </label>
+    <label for="destroy">ID of company to delete: </label>
       <select class="form-control" id="id" name="id">
         @foreach($comps as $comp)
           <option>{{$comp->id}}</option>

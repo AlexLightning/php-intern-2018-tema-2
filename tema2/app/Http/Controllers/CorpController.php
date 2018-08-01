@@ -13,7 +13,8 @@ class CorpController extends Controller
 
     public function showPage(){
         $comps = Company::all();
-        return view('pages.companies',compact('comps'));
+        $comp = new Company;
+        return view('pages.companies',compact('comps','comp'));
     }
 
     public function create(){

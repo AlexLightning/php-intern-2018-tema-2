@@ -13,14 +13,16 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($empls as $empl)
+    @forelse($empls as $empl)
     <tr>
       <th scope="row">{{$empl->id}}</th>
       <td>{{$empl->company_id}}</td>
       <td>{{$empl->human->name}}</td>
       <td>{{$empl->name}}</td>
     </tr>
-    @endforeach
+    @empty
+      <tr>No employees</tr>
+    @endforelse
   </tbody>
 </table>
 
@@ -31,7 +33,7 @@
 
 
 <form method="post" action="/employees/{{ $empl->id }}">
-    {{ method_field('PATCH') }}
+    {{ method_field('PUT') }}
     <div class="form-group">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     

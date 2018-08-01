@@ -9,7 +9,8 @@ class EmplController extends Controller
     public function showPage(){
         $empls = \App\Employee::all();
         $comps = \DB::table('companies')->groupBy('name')->pluck('name');
-        return view('pages.employees',compact('empls','comps'));
+        $empl = new \App\Employee;
+        return view('pages.employees',compact('empls','comps','empl'));
     }
 
     public function create(){
